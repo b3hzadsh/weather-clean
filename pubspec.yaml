@@ -41,19 +41,19 @@ dependencies:
   # get_it: ^7.2.0
   # go router , intl 
   # http: ^0.13.5
-  internet_connection_checker: ^1.0.0+1
-  shared_preferences: ^2.1.0
-  rename: ^2.1.1
-  objectbox: ^2.0.0
-  objectbox_flutter_libs: ^2.0.0
-  dio: ^5.1.1
-  dart_rss: ^2.0.1
-  connectivity_checker: ^1.1.0
-  connectivity_plus: ^2.1.0
-  objectbox_generator: ^2.0.0
-  build_runner: ^2.3.3
-  isar: ^3.1.0+1
-  isar_flutter_libs: ^3.1.0+1
+  # internet_connection_checker: ^1.0.0+1
+  # shared_preferences: ^2.1.0
+  # rename: ^2.1.1
+  # objectbox: ^2.0.0
+  # objectbox_flutter_libs: ^2.0.0
+  # dio: ^5.1.1
+  # dart_rss: ^2.0.1
+  # connectivity_checker: ^1.1.0
+  # connectivity_plus: ^2.1.0
+  # objectbox_generator: ^2.0.0
+  # build_runner: ^2.3.3
+  # isar: ^3.1.0+1
+  # isar_flutter_libs: ^3.1.0+1
   #
   provider: ^6.0.5
   flutter_bloc: ^8.1.2
