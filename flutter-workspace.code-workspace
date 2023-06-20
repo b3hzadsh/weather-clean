@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true,
+		"editor.detectIndentation": false,
+    "[dart]": {
+      "editor.tabSize": 2
+    }
+	}
+}
