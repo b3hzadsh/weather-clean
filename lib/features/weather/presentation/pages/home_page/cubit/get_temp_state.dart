@@ -13,12 +13,18 @@ class LoadingState extends GetTempState {} // indicator
 
 class ShowTempState extends GetTempState {
   /// show the temp
-  final double temp;
+  final WeatherEntity cityTempEntity;
 
-  const ShowTempState(this.temp);
+  const ShowTempState(this.cityTempEntity);
   @override
   // TODO: implement props
-  List<Object> get props => [temp];
-} 
+  List<Object> get props => [cityTempEntity];
+}
 
-class ShowErrorState extends GetTempState {} // some thing is wrong
+class ShowErrorState extends GetTempState {
+  final String errorMessage;
+
+  ShowErrorState(this.errorMessage);
+
+  List<Object> get props => [errorMessage];
+} // some thing is wrong

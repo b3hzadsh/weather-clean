@@ -38,6 +38,30 @@ Map<String, String> weatherMap = {
   "13d": "برفی",
   "50d": "وزش باد",
 };
-const String apiCom = "https://api.openweathermap.org/data/2.5/weather?q=";
-const String apiComEnd =
-    ",ir&appid=ed60fcfbd110ee65c7150605ea8aceea&units=metric";
+// http://dataservice.accuweather.com/currentconditions/v1/210841?apikey=JjQOOr3rGvCMEIoqZjAF3q3Ry06SABQB
+class WeatherService {
+  // http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={API_KEY}&q={latitude}%2C{longitude}
+  static const String apiKey = 'JjQOOr3rGvCMEIoqZjAF3q3Ry06SABQB';
+  static const String findCityNameAPIStart =
+      "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?";
+  static const String findWeatherAPIStart =
+      "http://dataservice.accuweather.com/currentconditions/v1/";
+  String apiComEnd = "apikey=$apiKey&q={latitude}%2C{longitude}";
+  //* make a class for using the shredpres
+  //* make a instanse here
+  //* use it to get city name
+  String requestCityNameUrl({required double latitude, required double longitude}) {
+    String res = '';
+    res += findCityNameAPIStart;
+    res += 'apikey=$apiKey&q=$latitude%2C$longitude';
+    // print(res);
+    return res;
+  }
+  String requestCityWeatherUrl({required String cityCode}) {
+    String res = '';
+    res += findWeatherAPIStart;
+    res += '$cityCode?apikey=$apiKey';
+    // print(res);
+    return res;
+  }
+}

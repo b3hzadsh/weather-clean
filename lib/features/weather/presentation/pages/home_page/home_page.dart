@@ -20,7 +20,8 @@ class HomePage extends StatelessWidget {
   ///
   const HomePage({super.key});
 
-  updateTheTemp (BuildContext context) => context.read<GetTempCubit>().adviceRequested();
+  updateTheTemp(BuildContext context) =>
+      context.read<GetTempCubit>().adviceRequested();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Advicer',
+          'Weather App',
           style: themeData.textTheme.displayLarge,
         ),
         centerTitle: true,
@@ -48,22 +49,53 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 50),
-            // Expanded(child: Container(), flex: 3),
-            Text('Tehran'),
+            BlocBuilder<GetTempCubit, GetTempState>(
+              builder: (context, state) {
+                if (state is GetTempInitial) {
+                  return Text('City is not detemine');
+                } else if (state is LoadingState) {
+                  return CircularProgressIndicator(
+                    color: themeData.indicatorColor,
+                  );
+                } else if (state is ShowTempState) {
+                  return Text(
+                    state.cityTempEntity.cityName,
+                    style: themeData.textTheme.headlineMedium,
+                  );
+                } else {
+                  return Text(errorMessage);
+                }
+                //
+              },
+            ),
             Expanded(flex: 1, child: Container()),
-            Expanded(flex: 2, child: Placeholder()),
+            Expanded(
+                flex: 2,
+                child: BlocBuilder<GetTempCubit, GetTempState>(
+                  builder: (context, state) {
+                    if (state is ShowTempState) {
+                      return Text(
+                        state.cityTempEntity.weatherText,
+                        style: themeData.textTheme.headlineLarge,
+                      );
+                    }
+                    return Container();
+                  },
+                )),
             Expanded(flex: 1, child: Container()),
             BlocBuilder<GetTempCubit, GetTempState>(
               builder: (context, state) {
-                if (kDebugMode) {
-                  print(state.runtimeType);
-                }
                 if (state is GetTempInitial) {
                   return Text(pushButtonForUpdat);
                 } else if (state is LoadingState) {
-                  return CircularProgressIndicator();
+                  return CircularProgressIndicator(
+                    color: themeData.indicatorColor,
+                  );
                 } else if (state is ShowTempState) {
-                  return Text('temp : ${state.temp}');
+                  return Text(
+                    '${state.cityTempEntity.temprature} °C',
+                    style: themeData.textTheme.headlineLarge,
+                  );
                 } else {
                   return Text(errorMessage);
                 }
@@ -71,7 +103,7 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(flex: 1, child: Container()),
             ElevatedButton.icon(
-              onPressed:()=> updateTheTemp(context),
+              onPressed: () => updateTheTemp(context),
               // onPressed: () => context.read<GetTempCubit>().adviceRequested(),
               icon: Icon(Icons.update),
               label: Text(updateButtonLable),
