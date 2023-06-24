@@ -6,7 +6,7 @@ import 'package:test_gradle_files/features/weather/domain/entities/city_temp_ent
 import '../models/weather_model.dart';
 
 abstract class WeatherRemoteDataSource {
-  Future<WeatherModel> getWeatherFromApi();
+  Future<WeatherModel> getWeatherFromApi(int cityId, String cityName);
 }
 
 class WeatherRemoteDataSourceImp implements WeatherRemoteDataSource {
@@ -14,23 +14,12 @@ class WeatherRemoteDataSourceImp implements WeatherRemoteDataSource {
   final WeatherService weatherService = WeatherService();
 
   @override
-  Future<WeatherModel> getWeatherFromApi() async {
-    final findCityInfoUrl = weatherService.requestCityNameUrl(
-      latitude: 35.715298,
-      longitude: 51.404343,
-    );
-    final responseCityInfo = await client.get(
-      Uri.parse(findCityInfoUrl),
-    );
-    final resposeBodyCityInfo = json.decode(responseCityInfo.body);
+  Future<WeatherModel> getWeatherFromApi(int cityID, String cityName) async {
     Map<String, dynamic> resultMap = {
-      'city': resposeBodyCityInfo['AdministrativeArea']['LocalizedName'],
+      'city': cityName,
     };
-    final cityCode = resposeBodyCityInfo['Key'];
-    //
-    final findWeatherInfoUrl = weatherService.requestCityWeatherUrl(
-      cityCode: cityCode,
-    );
+    final findWeatherInfoUrl =
+        weatherService.requestCityWeatherUrl(cityCode: '$cityID');
     final response = await client.get(
       Uri.parse(findWeatherInfoUrl),
     );

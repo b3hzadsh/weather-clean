@@ -38,10 +38,11 @@ Map<String, String> weatherMap = {
   "13d": "برفی",
   "50d": "وزش باد",
 };
+
 // http://dataservice.accuweather.com/currentconditions/v1/210841?apikey=JjQOOr3rGvCMEIoqZjAF3q3Ry06SABQB
 class WeatherService {
   // http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={API_KEY}&q={latitude}%2C{longitude}
-  static const String apiKey = 'JjQOOr3rGvCMEIoqZjAF3q3Ry06SABQB';
+  static const String apiKey = 'N5UtI7tCxLbfsgOf6Xa4FQLwEs8VHVG9';
   static const String findCityNameAPIStart =
       "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?";
   static const String findWeatherAPIStart =
@@ -50,18 +51,42 @@ class WeatherService {
   //* make a class for using the shredpres
   //* make a instanse here
   //* use it to get city name
-  String requestCityNameUrl({required double latitude, required double longitude}) {
+  String requestCityNameUrl(
+      {required double latitude, required double longitude}) {
     String res = '';
     res += findCityNameAPIStart;
     res += 'apikey=$apiKey&q=$latitude%2C$longitude';
     // print(res);
     return res;
   }
+
   String requestCityWeatherUrl({required String cityCode}) {
     String res = '';
     res += findWeatherAPIStart;
     res += '$cityCode?apikey=$apiKey';
     // print(res);
     return res;
+  }
+
+  static String weatherTextToImagePath(String weatherText) {
+    Map weatherTextToImagePathMap = {
+      //
+      "Sunny": "assets/images/weather_types/01d.svg",
+      "Mostly sunny": "assets/images/weather_types/01d.svg",
+      "Partly sunny": "assets/images/weather_types/02d.svg",
+      "Cloudy": "assets/images/weather_types/04d.svg",
+      "Mostly cloudy": "assets/images/weather_types/04d.svg",
+      "Partly cloudy": "assets/images/weather_types/04d.svg",
+      "Rainy": "assets/images/weather_types/09n.svg",
+      "Showers": "assets/images/weather_types/09d.svg",
+      "Thunderstorms": "assets/images/weather_types/11d.svg",
+      "Snowy": "assets/images/weather_types/13d.svg",
+      "Flurries": "assets/images/weather_types/13d.svg",
+      "Hazy": "assets/images/weather_types/42d.svg",
+      "Foggy": "assets/images/weather_types/42d.svg",
+      "Windy": "assets/images/weather_types/50d.svg",
+      //
+    };
+    return weatherTextToImagePathMap[weatherText];
   }
 }

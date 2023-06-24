@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
-// import 'package:flutter_bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:test_gradle_files/core/error/failure.dart';
 import 'package:test_gradle_files/core/usecase/usecase.dart';
 
+import '../../../../../setting/domain/usecases/get_city_usecase.dart';
 import '../../../../domain/entities/city_temp_entity.dart';
 import '../../../../domain/usecase/weather_usecase.dart';
 
@@ -15,14 +15,26 @@ const cacheFailureMessage = 'Ups, chache failed. Please try again!';
 
 class GetTempCubit extends Cubit<GetTempState> {
   GetTempCubit() : super(GetTempInitial());
-  final WaetherUsecase _usecase = WaetherUsecase();
+  final WaetherUsecase _weatherUsecase = WaetherUsecase();
+  final GetCityUsecase _getCityUsecase = GetCityUsecase();
 
-  void adviceRequested() async {
+  void updateWeather() async {
     emit(LoadingState());
-    final failureOrCte = await _usecase(NoParams());
-    failureOrCte.fold(
+    final failureOrCity = await _getCityUsecase(NoParams());
+    failureOrCity.fold(
       (failure) => emit(ShowErrorState(_mapFaliureToMessage(failure))),
-      (cte) => emit(ShowTempState(cte)),
+      (r) async {
+        final failureOrCte = await _weatherUsecase(
+          Params(
+            cityId: r.cityId,
+            cityName: r.cityName,
+          ),
+        );
+        failureOrCte.fold(
+          (failure) => emit(ShowErrorState(_mapFaliureToMessage(failure))),
+          (cte) => emit(ShowTempState(cte)),
+        );
+      },
     );
   }
 

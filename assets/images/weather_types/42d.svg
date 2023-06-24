@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="599.96307"
+   height="558.2608"
+   viewBox="0 0 35.997784 33.495648"
+   version="1.1"
+   id="svg1033"
+   sodipodi:docname="42d.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1037" />
+  <sodipodi:namedview
+     id="namedview1035"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.08"
+     inkscape:cx="300.46296"
+     inkscape:cy="283.7963"
+     inkscape:window-width="1839"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1033" />
+  <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+  <title
+     id="title1026">ic_fluent_weather_fog_48_regular</title>
+  <desc
+     id="desc1028">Created with Sketch.</desc>
+  <g
+     id="🔍-Product-Icons"
+     stroke="none"
+     stroke-width="1"
+     fill-rule="nonzero"
+     transform="translate(-6,-7)">
+    <g
+       id="ic_fluent_weather_fog_48_regular"
+       fill="#91c0f8"
+       fill-rule="evenodd">
+      <path
+         d="m 15.246715,38 h 17.50657 C 33.441827,38 34,38.55867 34,39.247824 c 0,0.646082 -0.490582,1.177481 -1.119246,1.241382 l -0.127469,0.0064 H 15.246715 C 14.558173,40.495649 14,39.936979 14,39.247824 c 0,-0.646082 0.490582,-1.177481 1.119246,-1.241382 z M 9.2478243,33 H 38.752176 C 39.44133,33 40,33.55867 40,34.247824 c 0,0.646082 -0.491019,1.177481 -1.120242,1.241382 l -0.127582,0.0064 H 9.2478243 C 8.55867,35.495649 8,34.936979 8,34.247824 8,33.601742 8.4910185,33.070343 9.1202415,33.006442 Z M 23.998892,7 c 6.337062,0 9.931969,4.194581 10.454798,9.260253 l 0.159933,-5e-6 c 4.078159,0 7.384161,3.297447 7.384161,7.365055 0,4.067608 -3.306002,7.365056 -7.384161,7.365056 H 13.384161 C 9.3060014,30.990359 6,27.692911 6,23.625303 6,19.557695 9.3060014,16.260248 13.384206,16.260248 l 0.159887,5e-6 C 14.069964,11.161286 17.66183,7 23.998892,7 Z m 0,2.4951794 c -4.261055,0 -7.975036,3.4479526 -7.975036,8.2105716 0,0.754628 -0.656132,1.346777 -1.407434,1.346753 l -1.420584,-4.7e-5 c -2.594071,0 -4.6969807,2.113826 -4.6969807,4.721361 0,2.607536 2.1029097,4.721361 4.6969807,4.721361 h 21.606108 c 2.594071,0 4.69698,-2.113825 4.69698,-4.721361 0,-2.607535 -2.102909,-4.721361 -4.696934,-4.721361 l -1.42063,4.7e-5 c -0.751302,2.4e-5 -1.407435,-0.592125 -1.407435,-1.346753 0,-4.823714 -3.71398,-8.2105716 -7.975035,-8.2105716 z"
+         id="🎨-Color" />
+    </g>
+  </g>
+  <metadata
+     id="metadata1039">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>ic_fluent_weather_fog_48_regular</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

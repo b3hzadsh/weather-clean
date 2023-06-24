@@ -4,3 +4,7 @@ class ServerException implements Exception {
 }
 
 class CacheException implements Exception {}
+class GPSPermissionException implements Exception {}
+class GPSStatusException implements Exception {}
+// class CacheException implements Exception {}
+// class CacheException implements Exception {}

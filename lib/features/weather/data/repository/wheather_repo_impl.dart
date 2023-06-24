@@ -11,9 +11,9 @@ class WeatherRepoImpl implements WeatherRepo {
   final WeatherRemoteDataSourceImp weatherRemoteDataSource = WeatherRemoteDataSourceImp();
 
   @override
-  Future<Either<Failure, WeatherEntity>> getWeatherFromDataSource() async {
+  Future<Either<Failure, WeatherEntity>> getWeatherFromDataSource(int cityID,String cityName) async {
     try {
-      final result = await weatherRemoteDataSource.getWeatherFromApi();
+      final result = await weatherRemoteDataSource.getWeatherFromApi(cityID,cityName);
       return right(result);
     } on ServerException catch (_) {
       return left(ServerFailure());

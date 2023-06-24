@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../../core/servises/weather_service.dart';
+
 class WeatherEntity extends Equatable {
   final String cityName, weatherText;
   final double temprature;
@@ -10,7 +12,8 @@ class WeatherEntity extends Equatable {
     required this.weatherText,
   });
 
+  get imagePath => WeatherService.weatherTextToImagePath(weatherText);
+
   @override
-  // TODO: implement props
   List<Object?> get props => [cityName, temprature, weatherText];
 }
