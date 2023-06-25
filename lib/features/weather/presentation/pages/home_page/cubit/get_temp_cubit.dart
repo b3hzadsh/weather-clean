@@ -1,10 +1,10 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_gradle_files/core/error/failure.dart';
 import 'package:test_gradle_files/core/usecase/usecase.dart';
 
-import '../../../../../setting/domain/usecases/get_city_usecase.dart';
 import '../../../../domain/entities/city_temp_entity.dart';
+import '../../../../domain/usecase/get_city_usecase.dart';
 import '../../../../domain/usecase/weather_usecase.dart';
 
 part 'get_temp_state.dart';
@@ -22,17 +22,20 @@ class GetTempCubit extends Cubit<GetTempState> {
     emit(LoadingState());
     final failureOrCity = await _getCityUsecase(NoParams());
     failureOrCity.fold(
-      (failure) => emit(ShowErrorState(_mapFaliureToMessage(failure))),
-      (r) async {
+      (failure) {
+        // print(failure.);
+        emit(ShowErrorState(_mapFaliureToMessage(failure)));
+      },
+      (cityModel) async {
         final failureOrCte = await _weatherUsecase(
           Params(
-            cityId: r.cityId,
-            cityName: r.cityName,
+            cityId: cityModel.cityId,
+            cityName: cityModel.cityName,
           ),
         );
         failureOrCte.fold(
           (failure) => emit(ShowErrorState(_mapFaliureToMessage(failure))),
-          (cte) => emit(ShowTempState(cte)),
+          (cityModel) => emit(ShowTempState(cityModel)),
         );
       },
     );

@@ -1,6 +1,5 @@
 import 'package:permission_handler/permission_handler.dart';
 import 'package:test_gradle_files/core/error/exceptions.dart';
-// import 'package:location/location.dart';
 
 class PermissionHelper {
   Future<bool> requestLocationPermission() async {
@@ -9,7 +8,6 @@ class PermissionHelper {
       permission = await Permission.location.request();
       if(permission.isPermanentlyDenied){
         throw GPSPermissionException();
-        return false;
       }
     }
     //todo if the user permanetly denny request , so what ?

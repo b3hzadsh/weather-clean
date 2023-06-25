@@ -2,8 +2,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:test_gradle_files/core/error/exceptions.dart';
 
 class LocationHelper {
-  //* first of all get the location permission
-  // todo top statement
   final latKey = 'latitude';
   final longKey = 'longitude';
   late Position position;
@@ -17,7 +15,6 @@ class LocationHelper {
       }
     } else {
       throw GPSStatusException();
-      print('please enable gps'); //todo with a toast
     }
   }
 

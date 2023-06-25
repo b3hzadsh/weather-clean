@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../data/repositories/city_repo_impl.dart';
-import '../entities/city_entity.dart';
 
 class SetCityByGPSUsecase implements UseCase<bool, NoParams> {
   CityRepoImpl repo = CityRepoImpl();

@@ -39,24 +39,18 @@ Map<String, String> weatherMap = {
   "50d": "وزش باد",
 };
 
-// http://dataservice.accuweather.com/currentconditions/v1/210841?apikey=JjQOOr3rGvCMEIoqZjAF3q3Ry06SABQB
 class WeatherService {
-  // http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={API_KEY}&q={latitude}%2C{longitude}
-  static const String apiKey = 'N5UtI7tCxLbfsgOf6Xa4FQLwEs8VHVG9';
+  static const String apiKey = 'WTFPEoHG4wSCWxCOqPDZQNT56aFySLGB';
   static const String findCityNameAPIStart =
       "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?";
   static const String findWeatherAPIStart =
       "http://dataservice.accuweather.com/currentconditions/v1/";
   String apiComEnd = "apikey=$apiKey&q={latitude}%2C{longitude}";
-  //* make a class for using the shredpres
-  //* make a instanse here
-  //* use it to get city name
   String requestCityNameUrl(
       {required double latitude, required double longitude}) {
     String res = '';
     res += findCityNameAPIStart;
     res += 'apikey=$apiKey&q=$latitude%2C$longitude';
-    // print(res);
     return res;
   }
 
@@ -64,13 +58,11 @@ class WeatherService {
     String res = '';
     res += findWeatherAPIStart;
     res += '$cityCode?apikey=$apiKey';
-    // print(res);
     return res;
   }
 
   static String weatherTextToImagePath(String weatherText) {
     Map weatherTextToImagePathMap = {
-      //
       "Sunny": "assets/images/weather_types/01d.svg",
       "Mostly sunny": "assets/images/weather_types/01d.svg",
       "Partly sunny": "assets/images/weather_types/02d.svg",
@@ -85,7 +77,6 @@ class WeatherService {
       "Hazy": "assets/images/weather_types/42d.svg",
       "Foggy": "assets/images/weather_types/42d.svg",
       "Windy": "assets/images/weather_types/50d.svg",
-      //
     };
     return weatherTextToImagePathMap[weatherText];
   }

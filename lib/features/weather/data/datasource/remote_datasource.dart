@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http show Client;
 import '../../../../core/servises/weather_service.dart';
-import 'package:test_gradle_files/features/weather/domain/entities/city_temp_entity.dart';
 
 import '../models/weather_model.dart';
 

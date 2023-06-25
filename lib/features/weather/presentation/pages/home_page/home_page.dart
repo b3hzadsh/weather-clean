@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Positioned.fill(
                                   child: SvgPicture.asset(
-                                    'assets/images/weather_types/09d.svg',
+                                    state.cityTempEntity.imagePath,
                                     fit: BoxFit.fitHeight,
                                   ),
                                 ),

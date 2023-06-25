@@ -5,10 +5,9 @@ import '../../../../core/servises/location_service.dart';
 import '../../../../core/servises/permission_service.dart';
 import '../../../../core/servises/sh_pref_service.dart';
 import '../../../../core/servises/weather_service.dart';
-import '../models/city_model.dart';
 
 abstract class CityLocalDataSource {
-  Future<CityModel> getCurrentCity();
+  // Future<CityModel> getCurrentCity();
   Future<void> cacheCity();
 }
 
@@ -66,15 +65,15 @@ class CityLocalDataSourceImpl implements CityLocalDataSource {
     }
   }
 
-  @override
-  Future<CityModel> getCurrentCity() async {
-    final cityName = await sharedPref.getString(cityKey);
-    final cityId = await sharedPref.getInt(cityIDKey);
-    if (cityName == '' || cityId == 00) {
-      throw CacheException();
-    }
-    return CityModel(cityName: cityName, cityId: cityId);
-  }
+  // @override
+  // Future<CityModel> getCurrentCity() async {
+  //   final cityName = await sharedPref.getString(cityKey);
+  //   final cityId = await sharedPref.getInt(cityIDKey);
+  //   if (cityName == '' || cityId == 00) {
+  //     throw CacheException();
+  //   }
+  //   return CityModel(cityName: cityName, cityId: cityId);
+  // }
 
   String _makeUrl({required double longitude, required double latitude}) {
     return '${WeatherService.findCityNameAPIStart}apikey=${WeatherService.apiKey}&q=$latitude%2C$longitude';
