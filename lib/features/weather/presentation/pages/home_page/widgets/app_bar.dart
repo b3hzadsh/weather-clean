@@ -3,14 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/servises/theme_service.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({super.key});
+  final String title;
+  final List<Widget> actions;
+  const MyAppBar({super.key, required this.title, required this.actions});
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return AppBar(
       title: Text(
-        'Weather App',
+        title,
         style: themeData.textTheme.displayLarge,
       ),
       centerTitle: true,
@@ -20,7 +22,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           onChanged: (_) {
             context.read<ThemeService>().toggleTheme();
           },
-        )
+        ),
+        ...actions
       ],
     );
   }

@@ -20,10 +20,10 @@ class GetTempCubit extends Cubit<GetTempState> {
 
   void updateWeather() async {
     emit(LoadingState());
+    //* check for how the last city saved 
     final failureOrCity = await _getCityUsecase(NoParams());
     failureOrCity.fold(
       (failure) {
-        // print(failure.);
         emit(ShowErrorState(_mapFaliureToMessage(failure)));
       },
       (cityModel) async {

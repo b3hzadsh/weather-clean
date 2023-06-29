@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/route.dart';
 import 'core/theme.dart';
 import 'core/servises/theme_service.dart';
-import 'features/setting/presentation/bloc/cubit/setting_cubit.dart';
 import 'features/setting/presentation/pages/setting_page.dart';
+import 'features/setting/presentation/bloc/cubit/setting_cubit.dart';
 import 'features/weather/presentation/pages/home_page/home_page.dart';
 import 'features/weather/presentation/pages/home_page/cubit/get_temp_cubit.dart';
 
@@ -49,15 +49,15 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (RouteSettings setting) {
           if (setting.name == "/") {
             return MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => const HomePage(),
             );
           } else if (setting.name == "/screens/setting") {
             return MaterialPageRoute(
-              builder: (context) => SettingPage(),
+              builder: (context) => const SettingPage(),
             );
           }
           return MaterialPageRoute(
-            builder: (context) => SettingPage(),
+            builder: (context) => const SettingPage(),
           );
         }
         // home: const HomePage(),

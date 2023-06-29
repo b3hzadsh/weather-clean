@@ -11,11 +11,11 @@ class SettingPage extends StatelessWidget {
   final String clickButtonMessage =
       'Click on the button to Update your location ';
   updateTheLocation(BuildContext context) =>
-      context.read<SettingCubit>().setNewCity();
+      context.read<SettingCubit>().setNewCityByGPS();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: MyAppBar(title: 'Setting', actions: [],),
       body: SafeArea(
         child: Column(
           children: [
@@ -25,8 +25,10 @@ class SettingPage extends StatelessWidget {
                 updateTheLocation(context);
               },
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 15,
+                ),
                 child: Text(buttonLable),
               ),
             ),
