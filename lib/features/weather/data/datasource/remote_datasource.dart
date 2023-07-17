@@ -19,6 +19,7 @@ class WeatherRemoteDataSourceImp implements WeatherRemoteDataSource {
     };
     final findWeatherInfoUrl =
         weatherService.requestCityWeatherUrl(cityCode: '$cityID');
+    print('salam bar ' + findWeatherInfoUrl);
     final response = await client.get(
       Uri.parse(findWeatherInfoUrl),
     );

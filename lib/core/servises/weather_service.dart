@@ -50,7 +50,8 @@ class WeatherService {
       {required double latitude, required double longitude}) {
     String res = '';
     res += findCityNameAPIStart;
-    res += 'apikey=$apiKey&q=$latitude%2C$longitude';
+    res += 'apikey=$apiKey&q=$latitude,$longitude';
+    // res += 'apikey=$apiKey&q=$latitude%2C$longitude';
     return res;
   }
 

@@ -12,6 +12,8 @@ import 'features/weather/presentation/pages/home_page/home_page.dart';
 import 'features/weather/presentation/pages/home_page/cubit/get_temp_cubit.dart';
 
 void main() async {
+  /// set new color for the buttons or repair the theme of buttons . 
+  /// 
   WidgetsFlutterBinding.ensureInitialized();
   // final route = RouteStuff(); // todo inject and set 
   // await di.init();

@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_gradle_files/features/setting/data/models/city_geo_model.dart';
 
 import '../../../../core/servises/city_service.dart';
 import '../bloc/cubit/setting_cubit.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+class MySearchBar extends StatelessWidget {
+  const MySearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-        onPressed: () {
-          showSearch(context: context, delegate: MySearchDelegate());
-        },
-        icon: const Icon(Icons.search));
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onSecondary,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Center(
+        child: InkWell(
+          onTap: () {
+            showSearch(context: context, delegate: MySearchDelegate());
+          },
+          child: const Row(
+            children: [
+              Icon(Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
