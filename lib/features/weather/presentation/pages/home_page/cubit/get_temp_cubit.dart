@@ -14,20 +14,36 @@ const serverFailureMessage = 'Ups, API Error. please try again!';
 const cacheFailureMessage = 'Ups, chache failed. Please try again!';
 
 class GetTempCubit extends Cubit<GetTempState> {
-  GetTempCubit() : super(GetTempInitial());
-  final WaetherUsecase _weatherUsecase = WaetherUsecase();
-  final GetCityUsecase _getCityUsecase = GetCityUsecase();
+  GetTempCubit({
+    required this.weatherUsecase,
+    required this.getCityUsecase,
+  }) : super(GetTempInitial());
+  final WaetherUsecase weatherUsecase;
+  final GetCityUsecase getCityUsecase;
+
+  void setMainCity() async {
+    final failureOrCity = await getCityUsecase(NoParams());
+    failureOrCity.fold(
+      (failure) {
+        emit(GetTempInitial());
+      },
+      (cityModel) async {
+        final String cityName = cityModel.cityName;
+        emit(MainCityState(cityName));
+      },
+    );
+  }
 
   void updateWeather() async {
     emit(LoadingState());
-    //* check for how the last city saved 
-    final failureOrCity = await _getCityUsecase(NoParams());
+    //* check for how the last city saved
+    final failureOrCity = await getCityUsecase(NoParams());
     failureOrCity.fold(
       (failure) {
         emit(ShowErrorState(_mapFaliureToMessage(failure)));
       },
       (cityModel) async {
-        final failureOrCte = await _weatherUsecase(
+        final failureOrCte = await weatherUsecase(
           Params(
             cityId: cityModel.cityId,
             cityName: cityModel.cityName,

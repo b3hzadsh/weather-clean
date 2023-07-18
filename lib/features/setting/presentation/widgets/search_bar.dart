@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_gradle_files/features/setting/data/models/city_geo_model.dart';
+import 'package:test_gradle_files/injection_container.dart';
 
 import '../../../../core/servises/city_service.dart';
 import '../bloc/cubit/setting_cubit.dart';
@@ -11,8 +12,9 @@ class MySearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSecondary,
+        color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Center(
@@ -22,7 +24,10 @@ class MySearchBar extends StatelessWidget {
           },
           child: const Row(
             children: [
-              Icon(Icons.search),
+              Icon(
+                Icons.search,
+                color: Colors.black87,
+              ),
             ],
           ),
         ),
@@ -76,13 +81,15 @@ class MySearchDelegate extends SearchDelegate {
       },
     ).toList();
     return ListView.builder(
+      itemCount: suggestions.length,
       itemBuilder: (context, index) {
         final suggestion = suggestions[index];
         return ListTile(
           title: Text(suggestion),
           onTap: () {
             query = suggestion;
-            context.read<SettingCubit>().setNewCityManualy(
+            // BlocProvider.of<SettingCubit>(context).setNewCityManualy(
+           sl<SettingCubit>().setNewCityManualy(
                   CityGeoModel(
                     cityName: suggestion,
                     longitude: cityInfo[suggestion]!['longitude'] as double,

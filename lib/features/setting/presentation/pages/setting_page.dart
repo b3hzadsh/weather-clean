@@ -2,19 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_gradle_files/features/setting/presentation/widgets/search_bar.dart';
 
+import '../../../../injection_container.dart';
 import '../bloc/cubit/setting_cubit.dart';
+
+class SettingPageWrapperProvider extends StatelessWidget {
+  const SettingPageWrapperProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<SettingCubit>(
+      create: (context) => sl<SettingCubit>(),
+      child: const SettingPage(),
+    );
+  }
+}
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
-  final String updateButtonLable = 'Set current city with GPS';
+  final String updateButtonLable = 'Set location with GPS';
   final String successMessage = 'City set successfully';
   final String clickButtonMessage =
       'Click on the button to Update your location ';
-  final MySearchBar _searchBar = const MySearchBar();
   updateTheLocation(BuildContext context) =>
       context.read<SettingCubit>().setNewCityByGPS();
   @override
   Widget build(BuildContext context) {
+    final themeData = Theme.of(context);
     return SafeArea(
       child: DefaultTabController(
         length: 2,
@@ -22,8 +35,9 @@ class SettingPage extends StatelessWidget {
           // appBar: MyAppBar(title: 'Setting', actions: []),
           appBar: AppBar(
             title: const Text('Setting'),
-            bottom: const TabBar(
-              tabs: [
+            bottom: TabBar(
+              labelStyle: themeData.textTheme.labelMedium,
+              tabs: const [
                 Tab(
                   text: 'set location with GPS',
                   icon: Icon(Icons.location_on),
@@ -41,7 +55,7 @@ class SettingPage extends StatelessWidget {
                 // the part of set loc with the gps
                 children: [
                   const SizedBox(height: 80),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () {
                       updateTheLocation(context);
                     },
@@ -50,7 +64,10 @@ class SettingPage extends StatelessWidget {
                         vertical: 8,
                         horizontal: 15,
                       ),
-                      child: Text(updateButtonLable),
+                      child: Text(
+                        updateButtonLable,
+                        style: themeData.textTheme.bodySmall,
+                      ),
                     ),
                   ),
                   BlocBuilder<SettingCubit, SettingState>(
@@ -67,11 +84,14 @@ class SettingPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
+              const Column(
                 // part for set loc with name of city
                 children: <Widget>[
-                  const SizedBox(height: 80),
-                  _searchBar,
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: MySearchBar(),
+                  ),
                 ],
               )
             ],

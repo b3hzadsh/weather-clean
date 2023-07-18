@@ -46,8 +46,10 @@ class WeatherService {
   static const String findWeatherAPIStart =
       "http://dataservice.accuweather.com/currentconditions/v1/";
   String apiComEnd = "apikey=$apiKey&q={latitude}%2C{longitude}";
-  String requestCityNameUrl(
-      {required double latitude, required double longitude}) {
+  String requestCityNameUrl({
+    required double latitude,
+    required double longitude,
+  }) {
     String res = '';
     res += findCityNameAPIStart;
     res += 'apikey=$apiKey&q=$latitude,$longitude';
@@ -78,6 +80,7 @@ class WeatherService {
       "Hazy": "assets/images/weather_types/42d.svg",
       "Foggy": "assets/images/weather_types/42d.svg",
       "Windy": "assets/images/weather_types/50d.svg",
+      "Clear": "assets/images/weather_types/51d.svg",
     };
     return weatherTextToImagePathMap[weatherText];
   }

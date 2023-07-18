@@ -15,10 +15,16 @@ class WeatherLocalDataSourceImp implements WeatherLocalDataSource {
   final cityIDKey = "CITY_ID";
   final String urlStart =
       'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
-  SharedPref sharedPref = SharedPref(); //todo remember to inject it as well
 
-  final client = http.Client();
-  final WeatherService weatherService = WeatherService();
+  final SharedPref sharedPref;
+  final http.Client client;
+  final WeatherService weatherService;
+
+  WeatherLocalDataSourceImp({
+    required this.sharedPref,
+    required this.client,
+    required this.weatherService,
+  });
 
   @override
   Future<CityModel> getCurrentCity() async {

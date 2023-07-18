@@ -9,14 +9,19 @@ import '../datasource/local_datasource.dart';
 import '../datasource/remote_datasource.dart';
 
 class WeatherRepoImpl implements WeatherRepo {
-  WeatherRepoImpl();
-  final WeatherRemoteDataSourceImp weatherRemoteDataSource = WeatherRemoteDataSourceImp();
-  final WeatherLocalDataSourceImp weatherLocalDatasource = WeatherLocalDataSourceImp();
+  WeatherRepoImpl({
+    required this.weatherRemoteDataSource,
+    required this.weatherLocalDatasource,
+  });
+  final WeatherRemoteDataSource weatherRemoteDataSource;
+  final WeatherLocalDataSource weatherLocalDatasource;
 
   @override
-  Future<Either<Failure, WeatherEntity>> getWeatherFromDataSource(int cityID,String cityName) async {
+  Future<Either<Failure, WeatherEntity>> getWeatherFromDataSource(
+      int cityID, String cityName) async {
     try {
-      final result = await weatherRemoteDataSource.getWeatherFromApi(cityID,cityName);
+      final result =
+          await weatherRemoteDataSource.getWeatherFromApi(cityID, cityName);
       return right(result);
     } on ServerException catch (_) {
       return left(ServerFailure());
@@ -24,9 +29,7 @@ class WeatherRepoImpl implements WeatherRepo {
       return left(GeneralFailure());
     }
   }
-  // Future<Either<Failure, CityEntity>> getCityFromDatasource() async {
-    
-  // }
+
   @override
   Future<Either<Failure, CityModel>> getCityFromDataSource() async {
     try {

@@ -10,15 +10,20 @@ import '../../../domain/usecases/set_city_gps_usecase.dart';
 part 'setting_state.dart';
 
 class SettingCubit extends Cubit<SettingState> {
-  SettingCubit() : super(SettingInitial());
-  final SetCityByGPSUsecase _setCityUsecase = SetCityByGPSUsecase();
-  final SetCityManualyUsecase _setCityManualyUsecase = SetCityManualyUsecase();
+  SettingCubit({
+    required this.setCityUsecase,
+    required this.setCityManualyUsecase,
+  }) : super(SettingInitial());
+
+  final SetCityByGPSUsecase setCityUsecase;
+  final SetCityManualyUsecase setCityManualyUsecase;
+
   final String cacheErrorMessage = 'There is a problem with cache';
   final String serverErrorMessage = 'Server is not responding';
   final String generalErrorMessage = 'There is a problem in some where';
 
   void setNewCityByGPS() async {
-    final failureOrbool = await _setCityUsecase(NoParams());
+    final failureOrbool = await setCityUsecase(NoParams());
     failureOrbool.fold(
       (l) {
         if (l is CacheFailure) {
@@ -34,7 +39,7 @@ class SettingCubit extends Cubit<SettingState> {
   }
 
   void setNewCityManualy(CityGeoModel cityGeoModel) async {
-    final failureOrbool = await _setCityManualyUsecase(cityGeoModel);
+    final failureOrbool = await setCityManualyUsecase(cityGeoModel);
     failureOrbool.fold(
       (l) {
         if (l is CacheFailure) {

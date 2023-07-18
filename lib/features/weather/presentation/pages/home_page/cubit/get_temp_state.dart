@@ -9,6 +9,13 @@ abstract class GetTempState extends Equatable {
 
 class GetTempInitial extends GetTempState {} // press to update temp
 
+class MainCityState extends GetTempState {
+  final String cityName;
+
+  const MainCityState(this.cityName);
+  List<Object> get props => [cityName];
+} // press to update temp
+
 class LoadingState extends GetTempState {} // indicator
 
 class ShowTempState extends GetTempState {
@@ -16,7 +23,8 @@ class ShowTempState extends GetTempState {
 
   const ShowTempState(this.cityTempEntity);
   @override
-  List<Object> get props => [cityTempEntity , cityTempEntity.cityName , cityTempEntity.temprature];
+  List<Object> get props =>
+      [cityTempEntity, cityTempEntity.cityName, cityTempEntity.temprature];
 }
 
 class ShowErrorState extends GetTempState {

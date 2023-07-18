@@ -9,14 +9,16 @@ import '../../../../core/error/exceptions.dart';
 import '../../domain/repositories/city_repo.dart';
 
 class CityRepoImpl implements CityRepo {
-  CityLocalDataSourceImpl cityLocalDataSourceImpl = CityLocalDataSourceImpl();
+  final CityLocalDataSource cityLocalDataSource;
+
+  CityRepoImpl({required this.cityLocalDataSource});
 
   @override
   Future<Either<Failure, bool>> setCityInDatasource({
     CityGeoModel? cityGeoModel,
   }) async {
     try {
-      final success = await cityLocalDataSourceImpl.cacheCity(cityGeoModel);
+      final success = await cityLocalDataSource.cacheCity(cityGeoModel);
       return right(success);
     } on CacheException catch (_) {
       return left(CacheFailure());

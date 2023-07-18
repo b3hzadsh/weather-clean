@@ -3,10 +3,12 @@ import 'package:test_gradle_files/features/setting/data/models/city_geo_model.da
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../data/repositories/city_repo_impl.dart';
+import '../repositories/city_repo.dart';
 
 class SetCityManualyUsecase implements UseCase<bool, CityGeoModel> {
-  CityRepoImpl repo = CityRepoImpl();
+  final CityRepo repo;
+
+  SetCityManualyUsecase({required this.repo});
   @override
   Future<Either<Failure, bool>> call(params) async {
     return repo.setCityInDatasource(cityGeoModel: params);

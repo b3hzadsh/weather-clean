@@ -9,8 +9,13 @@ abstract class WeatherRemoteDataSource {
 }
 
 class WeatherRemoteDataSourceImp implements WeatherRemoteDataSource {
-  final client = http.Client();
-  final WeatherService weatherService = WeatherService();
+  final http.Client client;
+  final WeatherService weatherService;
+
+  WeatherRemoteDataSourceImp({
+    required this.client,
+    required this.weatherService,
+  });
 
   @override
   Future<WeatherModel> getWeatherFromApi(int cityID, String cityName) async {

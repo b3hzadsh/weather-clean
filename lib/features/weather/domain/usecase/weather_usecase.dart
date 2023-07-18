@@ -2,12 +2,14 @@ import 'package:equatable/equatable.dart';
 import 'package:test_gradle_files/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:test_gradle_files/core/usecase/usecase.dart';
-import 'package:test_gradle_files/features/weather/data/repository/wheather_repo_impl.dart';
 
 import '../entities/city_temp_entity.dart';
+import '../repository/weather_repo.dart';
 
 class WaetherUsecase extends UseCase<WeatherEntity, Params> {
-  WeatherRepoImpl repo = WeatherRepoImpl();
+  final WeatherRepo repo;
+
+  WaetherUsecase({required this.repo});
   @override
   Future<Either<Failure, WeatherEntity>> call(Params params) async {
     return repo.getWeatherFromDataSource(params.cityId, params.cityName);
