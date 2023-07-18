@@ -17,7 +17,9 @@ class GetTempCubit extends Cubit<GetTempState> {
   GetTempCubit({
     required this.weatherUsecase,
     required this.getCityUsecase,
-  }) : super(GetTempInitial());
+  }) : super(GetTempInitial()){
+    setMainCity();
+  }
   final WaetherUsecase weatherUsecase;
   final GetCityUsecase getCityUsecase;
 

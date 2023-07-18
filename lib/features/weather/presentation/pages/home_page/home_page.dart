@@ -139,14 +139,13 @@ class HomePage extends StatelessWidget {
                                   top: width * 0.05 * -1,
                                   child: Text(
                                     '${state.cityTempEntity.temprature} °C',
-                                    // '35 °C',
                                     style:
                                         themeData.textTheme.bodyLarge!.copyWith(
                                       shadows: <Shadow>[
                                         Shadow(
-                                          offset: Offset(10.0, 10.0),
+                                          offset: Offset(8.0, 8.0),
                                           blurRadius: 3.0,
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          color: Color.fromARGB(150, 0, 0, 0),
                                         ),
                                         Shadow(
                                           offset: Offset(10.0, 10.0),

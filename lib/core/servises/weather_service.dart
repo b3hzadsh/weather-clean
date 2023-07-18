@@ -40,7 +40,7 @@ Map<String, String> weatherMap = {
 };
 
 class WeatherService {
-  static const String apiKey = 'WTFPEoHG4wSCWxCOqPDZQNT56aFySLGB';
+  static const String apiKey = String.fromEnvironment('ACCU_API_KEY');
   static const String findCityNameAPIStart =
       "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?";
   static const String findWeatherAPIStart =
@@ -72,6 +72,7 @@ class WeatherService {
       "Cloudy": "assets/images/weather_types/04d.svg",
       "Mostly cloudy": "assets/images/weather_types/04d.svg",
       "Partly cloudy": "assets/images/weather_types/04d.svg",
+      "Clouds and sun": "assets/images/weather_types/02d.svg",
       "Rainy": "assets/images/weather_types/09n.svg",
       "Showers": "assets/images/weather_types/09d.svg",
       "Thunderstorms": "assets/images/weather_types/11d.svg",
