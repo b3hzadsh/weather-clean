@@ -12,7 +12,7 @@ class WeatherEntity extends Equatable {
     required this.weatherText,
   });
 
-  get imagePath => WeatherService.weatherTextToImagePath(weatherText);
+  String? get imagePath => WeatherService.weatherTextToImagePath(weatherText);
 
   @override
   List<Object?> get props => [cityName, temprature, weatherText];

@@ -14,7 +14,7 @@ class CityRepoImpl implements CityRepo {
   CityRepoImpl({required this.cityLocalDataSource});
 
   @override
-  Future<Either<Failure, bool>> setCityInDatasource({
+  Future<Either<Failure, String>> setCityInDatasource({
     CityGeoModel? cityGeoModel,
   }) async {
     try {
@@ -22,6 +22,18 @@ class CityRepoImpl implements CityRepo {
       return right(success);
     } on CacheException catch (_) {
       return left(CacheFailure());
+    } on GPSStatusException catch (_) {
+      print('object');
+      print('object');
+      print('object');
+      print('object');
+      return left(GPSStatusFailure()); // we have no state for this event 
+    } on GPSPermissionException catch (_) {
+      print('object');
+      print('object');
+      print('object');
+      print('object');
+      return left(GPSPermissionFailure());// we have no state for this event
     }
   }
 }

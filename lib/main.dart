@@ -1,4 +1,6 @@
 // import 'injection_container.dart' as di;
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,12 +9,11 @@ import 'package:test_gradle_files/injection_container.dart' as di;
 import 'core/route.dart';
 import 'core/theme.dart';
 import 'core/servises/theme_service.dart';
-import 'features/setting/presentation/pages/setting_page.dart';
-import 'features/weather/presentation/pages/home_page/home_page.dart';
 
 void main() async {
   /// remove commented codes
   ///
+  HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   // final route = RouteStuff(); // todo inject and set
   await di.init();
@@ -36,20 +37,16 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: (RouteSettings setting) {
-        if (setting.name == "/") {
-          return MaterialPageRoute(
-            builder: (context) => const HomePageWrapperProvider(),
-          );
-        } else if (setting.name == "/screens/setting") {
-          return MaterialPageRoute(
-            builder: (context) => const SettingPageWrapperProvider(),
-          );
-        }
-        return MaterialPageRoute(
-          builder: (context) => const SettingPage(),
-        );
-      },
+      onGenerateRoute: RouteStuff.onGenerateRoute,
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

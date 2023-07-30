@@ -8,6 +8,7 @@ abstract class GetTempState extends Equatable {
 }
 
 class GetTempInitial extends GetTempState {} // press to update temp
+class NoCitySetState extends GetTempState {} 
 
 class MainCityState extends GetTempState {
   final String cityName;

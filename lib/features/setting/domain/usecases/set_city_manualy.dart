@@ -5,12 +5,12 @@ import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../repositories/city_repo.dart';
 
-class SetCityManualyUsecase implements UseCase<bool, CityGeoModel> {
+class SetCityManualyUsecase implements UseCase<String, CityGeoModel> {
   final CityRepo repo;
 
   SetCityManualyUsecase({required this.repo});
   @override
-  Future<Either<Failure, bool>> call(params) async {
+  Future<Either<Failure, String>> call(params) async {
     return repo.setCityInDatasource(cityGeoModel: params);
   }
 }

@@ -1,111 +1,111 @@
 final Map<String, Map<String, double>> cityInfo = {
   "Tehran": {
-    "latitude": 35.6892,
-    "longitude": 51.3889
+    "latitude": 35.715298,
+    "longitude": 51.404343
   },
   "Kashan": {
     "latitude": 33.9833,
     "longitude": 51.4333
   },
   "Mashhad": {
-    "latitude": 36.3,
-    "longitude": 59.6
+    "latitude": 36.310699,
+    "longitude": 59.599457
   },
   "Esfahan": {
-    "latitude": 32.6447,
-    "longitude": 51.6675
+    "latitude": 32.661343,
+    "longitude": 51.680374
   },
   "Karaj": {
-    "latitude": 35.8272,
-    "longitude": 50.9489
+    "latitude": 35.855938,
+    "longitude": 50.961750
   },
   "Shiraz": {
-    "latitude": 29.61,
-    "longitude": 52.5425
+    "latitude": 29.591768,
+    "longitude": 52.583698
   },
   "Tabriz": {
-    "latitude": 38.0814,
-    "longitude": 46.3006
+    "latitude": 38.066666,
+    "longitude": 46.299999
   },
   "Ahvaz": {
-    "latitude": 31.3203,
-    "longitude": 48.6692
+    "latitude": 31.318327,
+    "longitude": 48.670620
   },
   "Qom": {
-    "latitude": 34.64,
-    "longitude": 50.8764
+    "latitude": 34.639999,
+    "longitude": 50.876389
   },
   "Kermanshah": {
-    "latitude": 34.3142,
-    "longitude": 47.065
+    "latitude": 34.33015439616501,
+    "longitude": 47.082822900409475
   },
   "Kerman": {
-    "latitude": 30.2833,
-    "longitude": 57.0833
+    "latitude": 30.283937,
+    "longitude": 7.083363
   },
   "Orumiyeh": {
-    "latitude": 37.5486,
-    "longitude": 45.0675
+    "latitude": 37.552673,
+    "longitude": 45.076046
   },
   "Rasht": {
-    "latitude": 37.2808,
-    "longitude": 49.5831
+    "latitude": 37.280834,
+    "longitude": 49.583057
   },
   "Bahar": {
     "latitude": 34.9072,
     "longitude": 48.4414
   },
-  "Zahedan": {
-    "latitude": 29.4964,
-    "longitude": 60.8628
+  "Zahedan": { 
+    "latitude": 29.492338695824685,
+    "longitude": 60.86745440367783
   },
   "Hamadan": {
-    "latitude": 34.8064,
-    "longitude": 48.5161
+    "latitude": 34.80043222346554,
+    "longitude": 48.51455356175297
   },
-  "Yazd": {
-    "latitude": 31.8822,
-    "longitude": 54.3397
+  "Yazd": { 
+    "latitude": 31.885653887997776,
+    "longitude": 54.35152568249149
   },
   "Ardabil": {
-    "latitude": 38.2425,
-    "longitude": 48.29
+    "latitude": 38.242961674598234,
+    "longitude": 48.29551161243705
   },
   "Bandar `Abbas": {
-    "latitude": 27.1833,
-    "longitude": 56.2667
+    "latitude": 27.189256476385463,
+    "longitude": 56.29041133140598
   },
   "Arak": {
-    "latitude": 34.0917,
-    "longitude": 49.6892
+    "latitude": 34.08878868969515,
+    "longitude": 49.69932650842891
   },
   "Eslamshahr": {
     "latitude": 35.5606,
     "longitude": 51.2347
   },
   "Zanjan": {
-    "latitude": 36.6789,
-    "longitude": 48.5056
+    "latitude":36.6844199564264,
+    "longitude": 48.50982518038164
   },
-  "Sanandaj": {
-    "latitude": 35.3144,
-    "longitude": 46.9922
+  "Sanandaj": { 
+    "latitude": 35.31248259510601,
+    "longitude": 46.99614791708446
   },
-  "Qazvin": {
-    "latitude": 36.2667,
-    "longitude": 50.0
+  "Qazvin": { 
+    "latitude": 36.28221401853013,
+    "longitude": 50.00349682482528
   },
-  "Khorramabad": {
-    "latitude": 36.7828,
-    "longitude": 50.8722
+  "Khorramabad": { 
+    "latitude": 33.48296313843666,
+    "longitude": 48.371284399204164
   },
   "Madan": {
     "latitude": 30.3392,
     "longitude": 48.3042
   },
   "Gorgan": {
-    "latitude": 36.8386,
-    "longitude": 54.4347
+    "latitude": 36.83862578883263,
+    "longitude": 54.43420269924553
   },
   "Shahr-e Qods": {
     "latitude": 35.7214,
@@ -140,8 +140,8 @@ final Map<String, Map<String, double>> cityInfo = {
     "longitude": 52.86
   },
   "Sabzevar": {
-    "latitude": 36.2125,
-    "longitude": 57.6819
+    "latitude": 36.21091850487545,
+    "longitude": 57.67741459153029
   },
   "Amol": {
     "latitude": 36.4697,
@@ -163,17 +163,17 @@ final Map<String, Map<String, double>> cityInfo = {
     "latitude": 35.4394,
     "longitude": 51.5689
   },
-  "Bojnurd": {
-    "latitude": 37.475,
-    "longitude": 57.3333
+  "Bojnurd": { 
+    "latitude": 37.476423911451135,
+    "longitude": 57.32154965764182
   },
   "Varamin": {
     "latitude": 35.3242,
     "longitude": 51.6458
   },
-  "Bandar-e Bushehr": {
-    "latitude": 28.9264,
-    "longitude": 50.8514
+  "Bandar-e Bushehr": { //, 
+    "latitude": 28.928270259531594,
+    "longitude": 50.83758532780469
   },
   "Neyshabur": {
     "latitude": 36.22,
@@ -187,9 +187,9 @@ final Map<String, Map<String, double>> cityInfo = {
     "latitude": 35.5644,
     "longitude": 51.1647
   },
-  "Birjand": {
-    "latitude": 32.8667,
-    "longitude": 59.2167
+  "Birjand": { 
+    "latitude": 32.876666033769695,
+    "longitude":  59.21645012790034
   },
   "Khowy": {
     "latitude": 38.5519,
@@ -199,13 +199,13 @@ final Map<String, Map<String, double>> cityInfo = {
     "latitude": 36.5172,
     "longitude": 46.2114
   },
-  "Shahr-e Kord": {
-    "latitude": 32.3311,
-    "longitude": 50.8594
+  "Shahr-e Kord": { 
+    "latitude":32.33406659193865,
+    "longitude": 50.865687500048594
   },
-  "Semnan": {
-    "latitude": 35.5728,
-    "longitude": 53.3972
+  "Semnan": { 
+    "latitude": 35.578351474391,
+    "longitude": 53.39480561001364
   },
   "Fardis": {
     "latitude": 35.7167,

@@ -4,7 +4,7 @@ import 'package:test_gradle_files/core/error/exceptions.dart';
 class LocationHelper {
   final latKey = 'latitude';
   final longKey = 'longitude';
-  late Position position;
+  Position? position;
   init() async {
     final x = await Geolocator.requestPermission();
     if (LocationPermission.always == x || LocationPermission.whileInUse == x) {
@@ -19,10 +19,20 @@ class LocationHelper {
   }
 
   get long {
-    return position.longitude;
+    if (position != null) {
+      return myRound(position!.longitude);
+    }
+    throw GPSStatusException();
   }
 
   get lat {
-    return position.latitude;
+    if (position != null) {
+      return myRound(position!.latitude);
+    }
+    throw GPSStatusException();
+  }
+
+  double myRound(double n) {
+    return double.parse(n.toStringAsFixed(6));
   }
 }

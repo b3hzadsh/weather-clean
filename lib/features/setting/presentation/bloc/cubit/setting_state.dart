@@ -7,9 +7,18 @@ abstract class SettingState extends Equatable {
   List<Object> get props => [];
 }
 
-class SettingInitial extends SettingState {}
+class SettingInitial extends SettingState {
+  final String cityName;
 
-class SettingStateSuccess extends SettingState {}
+  const SettingInitial({required this.cityName});
+}
+
+class SettingStateLoading extends SettingState {}
+class SettingStateSuccess extends SettingState {
+  final String cityName;
+
+  const SettingStateSuccess({required this.cityName});
+}
 
 class SettingStateFailed extends SettingState {
   final String errorMessage;

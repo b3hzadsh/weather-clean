@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_gradle_files/features/setting/data/models/city_geo_model.dart';
-import 'package:test_gradle_files/injection_container.dart';
 
 import '../../../../core/servises/city_service.dart';
 import '../bloc/cubit/setting_cubit.dart';
@@ -20,7 +19,7 @@ class MySearchBar extends StatelessWidget {
       child: Center(
         child: InkWell(
           onTap: () {
-            showSearch(context: context, delegate: MySearchDelegate());
+            showSearch(context: context, delegate: MySearchDelegate(context));
           },
           child: const Row(
             children: [
@@ -37,7 +36,10 @@ class MySearchBar extends StatelessWidget {
 }
 
 class MySearchDelegate extends SearchDelegate {
+  final BuildContext upperContext;
   List<String> searchResults = cityInfo.keys.toList();
+
+  MySearchDelegate(this.upperContext);
   // List<String> searchResult =
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -88,8 +90,8 @@ class MySearchDelegate extends SearchDelegate {
           title: Text(suggestion),
           onTap: () {
             query = suggestion;
-            // BlocProvider.of<SettingCubit>(context).setNewCityManualy(
-           sl<SettingCubit>().setNewCityManualy(
+            BlocProvider.of<SettingCubit>(upperContext).setNewCityManualy(
+          //  sl<SettingCubit>().setNewCityManualy(
                   CityGeoModel(
                     cityName: suggestion,
                     longitude: cityInfo[suggestion]!['longitude'] as double,

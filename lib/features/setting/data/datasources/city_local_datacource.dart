@@ -10,7 +10,7 @@ import '../models/city_geo_model.dart';
 
 abstract class CityLocalDataSource {
   // Future<CityModel> getCurrentCity();
-  Future<bool> cacheCity(CityGeoModel? cityGeoModel);
+  Future<String> cacheCity(CityGeoModel? cityGeoModel);
 }
 
 class CityLocalDataSourceImpl implements CityLocalDataSource {
@@ -36,7 +36,7 @@ class CityLocalDataSourceImpl implements CityLocalDataSource {
   });
 
   @override
-  Future<bool> cacheCity(CityGeoModel? cityGeoModel) async {
+  Future<String> cacheCity(CityGeoModel? cityGeoModel) async {
     //* first we should get city by gps [service]
     //* before that we need get gps permission
     //* then we should get cityKey with that info
@@ -69,12 +69,12 @@ class CityLocalDataSourceImpl implements CityLocalDataSource {
         throw ServerException();
       } else {
         final respose = json.decode(response.body);
-        final cityName = respose['AdministrativeArea']['LocalizedName'];
+        final cityName = respose['LocalizedName'];
         final cityCode = respose['Key'];
         if (cityName != '' && cityCode != '') {
           await sharedPref.setString(cityKey, cityName);
           await sharedPref.setInt(cityIDKey, int.parse(cityCode));
-          return true;
+          return cityName;
         } else {
           throw CacheException();
         }

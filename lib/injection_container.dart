@@ -5,6 +5,7 @@ import 'core/servises/internet_service.dart';
 import 'core/servises/location_service.dart';
 import 'core/servises/permission_service.dart';
 import 'core/servises/sh_pref_service.dart';
+import 'core/servises/theme_service.dart';
 import 'core/servises/weather_service.dart';
 import 'features/setting/data/datasources/city_local_datacource.dart';
 import 'features/setting/data/repositories/city_repo_impl.dart';
@@ -85,6 +86,7 @@ Future<void> init() async {
 
 // ! externs
   sl.registerFactory<http.Client>(() => http.Client());
+  sl.registerFactory<ThemeService>(() => ThemeService());
   sl.registerFactory<WeatherService>(() => WeatherService());
   sl.registerLazySingleton<SharedPref>(() => SharedPref());
   sl.registerFactory<InternetService>(() => InternetService());

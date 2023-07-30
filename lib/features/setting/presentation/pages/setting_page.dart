@@ -23,6 +23,8 @@ class SettingPage extends StatelessWidget {
   final String successMessage = 'City set successfully';
   final String clickButtonMessage =
       'Click on the button to Update your location ';
+  final String clickButtonMessageManual =
+      'Click on the search bar to Update your location ';
   updateTheLocation(BuildContext context) =>
       context.read<SettingCubit>().setNewCityByGPS();
   @override
@@ -51,46 +53,114 @@ class SettingPage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
+              // the part of set loc with the gps
               Column(
-                // the part of set loc with the gps
                 children: [
                   const SizedBox(height: 80),
-                  TextButton(
-                    onPressed: () {
+                  //
+                  InkWell(
+                    onTap: () {
                       updateTheLocation(context);
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 15,
-                      ),
-                      child: Text(
-                        updateButtonLable,
-                        style: themeData.textTheme.bodySmall,
+                    child: Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: themeData.colorScheme.secondary,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 14,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            updateButtonLable,
+                            style: themeData.textTheme.headlineMedium!.copyWith(
+                              fontSize: 20,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  BlocBuilder<SettingCubit, SettingState>(
-                    builder: (context, state) {
-                      if (state is SettingStateSuccess) {
-                        return Text(successMessage);
-                      } else if (state is SettingInitial) {
-                        return Text(clickButtonMessage);
-                      } else if (state is SettingStateFailed) {
-                        return Text(state.errorMessage);
-                      }
-                      return Container();
-                    },
+                  //
+                  // TextButton(
+                  //   onPressed: () {
+                  //     updateTheLocation(context);
+                  //   },
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.symmetric(
+                  //       vertical: 8,
+                  //       horizontal: 15,
+                  //     ),
+                  //     child: Text(
+                  //       updateButtonLable,
+                  //       style: themeData.textTheme.bodySmall,
+                  //     ),
+                  //   ),
+                  // ),
+                  const SizedBox(height: 200),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: BlocBuilder<SettingCubit, SettingState>(
+                        builder: (context, state) {
+                          if (state is SettingStateSuccess) {
+                            return Text(successMessage);
+                          } else if (state is SettingInitial) {
+                            return Text(
+                              clickButtonMessage,
+                              textAlign: TextAlign.center,
+                            );
+                          } else if (state is SettingStateLoading) {
+                            return CircularProgressIndicator(
+                              color: themeData.textTheme.displaySmall!.color!,
+                            );
+                          } else if (state is SettingStateFailed) {
+                            return Text(state.errorMessage);
+                          }
+                          return Container();
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const Column(
+              Column(
                 // part for set loc with name of city
                 children: <Widget>[
-                  SizedBox(height: 20),
-                  Padding(
+                  const SizedBox(height: 20),
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: MySearchBar(),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: BlocBuilder<SettingCubit, SettingState>(
+                      builder: (context, state) {
+                        if (state is SettingStateSuccess) {
+                          return Text('Current city is : ${state.cityName}');
+                        } else if (state is SettingStateLoading) {
+                          return CircularProgressIndicator(
+                            color: themeData.textTheme.displaySmall!.color!,
+                          );
+                        } else if (state is SettingInitial) {
+                          return Text(
+                            clickButtonMessageManual,
+                            textAlign: TextAlign.center,
+                          );
+                        } else if (state is SettingStateFailed) {
+                          return Text(state.errorMessage);
+                        }
+                        return Container();
+                      },
+                    ),
                   ),
                 ],
               )

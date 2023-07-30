@@ -37,21 +37,21 @@ class AppTheme {
     fontFamily: "Roboto",
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.normal,
-    fontSize: 140,
+    fontSize: 101, //140
   );
   static const TextStyle _lightBodyMediumText = TextStyle(
     color: _lightTextColorPrimary,
     fontFamily: "Roboto",
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.normal,
-    fontSize: 60,
+    fontSize: 23,
   );
   static const TextStyle _lightBodySmallText = TextStyle(
     color: _lightTextColorPrimary,
     fontFamily: "Roboto",
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.normal,
-    fontSize: 40,
+    fontSize: 32,
   );
 
   static const TextTheme _lightTextTheme = TextTheme(

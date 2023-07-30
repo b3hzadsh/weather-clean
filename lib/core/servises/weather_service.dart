@@ -40,7 +40,8 @@ Map<String, String> weatherMap = {
 };
 
 class WeatherService {
-  static const String apiKey = String.fromEnvironment('ACCU_API_KEY');
+  static const String apiKey = 'WTFPEoHG4wSCWxCOqPDZQNT56aFySLGB';
+  // static const String apiKey = String.fromEnvironment('ACCU_API_KEY');
   static const String findCityNameAPIStart =
       "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?";
   static const String findWeatherAPIStart =
@@ -64,7 +65,7 @@ class WeatherService {
     return res;
   }
 
-  static String weatherTextToImagePath(String weatherText) {
+  static String? weatherTextToImagePath(String weatherText) {
     Map weatherTextToImagePathMap = {
       "Sunny": "assets/images/weather_types/01d.svg",
       "Mostly sunny": "assets/images/weather_types/01d.svg",
@@ -82,6 +83,7 @@ class WeatherService {
       "Foggy": "assets/images/weather_types/42d.svg",
       "Windy": "assets/images/weather_types/50d.svg",
       "Clear": "assets/images/weather_types/51d.svg",
+      "Mostly clear": "assets/images/weather_types/51d.svg",
     };
     return weatherTextToImagePathMap[weatherText];
   }

@@ -38,6 +38,7 @@ class GetTempCubit extends Cubit<GetTempState> {
 
   void updateWeather() async {
     emit(LoadingState());
+    //! if there is no city , emit nocitystate 
     //* check for how the last city saved
     final failureOrCity = await getCityUsecase(NoParams());
     failureOrCity.fold(
@@ -62,11 +63,11 @@ class GetTempCubit extends Cubit<GetTempState> {
   _mapFaliureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return 'server error';
+        return 'There is a problem with the internet connection';
       case CacheFailure:
-        return 'cache error';
+        return 'No city is set. Set a city by tapping on the settings button at the top of this screen';
       case GeneralFailure:
-        return 'some thing is wrong';
+        return 'Some thing is wrong';
       default:
     }
   }
