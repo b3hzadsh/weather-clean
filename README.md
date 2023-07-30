@@ -1,6 +1,6 @@
-# test_gradle_files
+# A Completed Flutter App - FindSeat (BLoC + Json API)
 
-A new Flutter project.
+
 
 ## Getting Started
 
