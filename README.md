@@ -1,16 +1,38 @@
-# A Completed Flutter App - FindSeat (BLoC + Json API)
+# A Completed Flutter App - Weather (BLoC + Json API)
+
+## App Features:
+* BloC pattern
+* Responsive
+* Dark mode
+* User-friendly interface
+* Clean Architecture
+* Custom resuable widgets
+
+Here is the folder structure that I have used for this project.
+
+```
+lib/
+|- core /
+    |-error / 
+    |-network /
+    |-service /
+    |-usecase /
+|- features /
+    |- setting /
+        |- domain /
+        |- data /
+        |- presentation /
+    |- weather /
+        |- domain /
+        |- data /
+        |- presentation /
+```
+
+## Before run project, execute commands:
+- `flutter clean`
+- `flutter pub get`
+- `flutter run`
 
 
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Some Screen shots:
+![Banner](https://github.com/b3hzadsh/weather-clean/blob/weather_app/images/all%20in%20one.jpg?raw=true)

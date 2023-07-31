@@ -21,11 +21,10 @@ import 'features/weather/domain/usecase/get_city_usecase.dart';
 import 'features/weather/domain/usecase/weather_usecase.dart';
 import 'features/weather/presentation/pages/home_page/cubit/get_temp_cubit.dart';
 
-final sl = GetIt.I; // sl == Service Locator
+final sl = GetIt.I;
 
 Future<void> init() async {
 // ! application Layer
-  // Factory = every time a new/fresh instance of that class
   sl.registerFactory<GetTempCubit>(
     () => GetTempCubit(
       getCityUsecase: sl(),
